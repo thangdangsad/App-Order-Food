@@ -15,11 +15,11 @@ class ListOfRecipes with ChangeNotifier {
       cookTime: 10.0,
       recipeServing: 2,
       recipeIngredients: [
-        '1/2 small avocado',
-        '1/2 teaspoon fresh lemon juice',
-        'salt',
-        'black pepper',
-        '1 slice bread'
+        '1/2 quả bơ nhỏ',
+        '1/2 thìa nước cốt chanh tươi',
+        'muối',
+        'hạt tiêu đen',
+        '1 lát bánh mì'
       ],
       recipeMethod:
           'In a small bowl, combine avocado, lemon juice, salt, and pepper. Gently mash with the back of a fork. Top toasted bread with mashed avocado mixture. Drizzle with olive oil and sprinkle over desired toppings.',
