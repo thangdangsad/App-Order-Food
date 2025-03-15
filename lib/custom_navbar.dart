@@ -49,19 +49,19 @@ class _CustomNavBarState extends State<CustomNavBar>
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(UniconsLine.home),
-            label: 'Home',
+            label: 'Trang chủ',
           ),
           BottomNavigationBarItem(
             icon: Icon(UniconsLine.apps),
-            label: 'Category',
+            label: 'Thể loại',
           ),
           BottomNavigationBarItem(
             icon: Icon(UniconsLine.bookmark),
-            label: 'Saved',
+            label: 'Lưu',
           ),
           BottomNavigationBarItem(
             icon: Icon(UniconsLine.user),
-            label: 'Profile',
+            label: 'Hồ sơ',
           ),
         ],
       ),

@@ -14,7 +14,7 @@ class HomeLogoText extends StatelessWidget {
         style: DefaultTextStyle.of(context).style,
         children: <TextSpan>[
           TextSpan(
-            text: 'Food',
+            text: 'Công Thức ',
             style: GoogleFonts.montserrat(
               fontSize: 22.0.sp,
               fontWeight: FontWeight.w600,
@@ -23,7 +23,7 @@ class HomeLogoText extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: 'Recipe',
+            text: 'Nấu Ăn',
             style: GoogleFonts.montserrat(
               fontSize: 22.0.sp,
               fontWeight: FontWeight.w600,

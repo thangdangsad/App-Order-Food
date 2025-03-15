@@ -17,15 +17,15 @@ class TabRow extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                const TabButtons(text: 'Filter'),
+                const TabButtons(text: 'Lọc'),
                 SizedBox(
                   width: 2.0.h,
                 ),
-                const TabButtons(text: 'Sort'),
+                const TabButtons(text: 'Sắp xếp'),
                 SizedBox(
                   width: 2.0.h,
                 ),
-                const TabButtons(text: 'Category'),
+                const TabButtons(text: 'Thể loại'),
               ],
             ),
           ),

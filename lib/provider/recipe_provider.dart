@@ -7,7 +7,7 @@ class ListOfRecipes with ChangeNotifier {
   final List<Recipe> _recipes = [
     Recipe(
       recipeId: 1,
-      recipeCategory: 'Breakfast',
+      recipeCategory: 'Bữa Sáng ',
       recipeName: 'Bánh mì nướng',
       recipeImage:
           'https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -27,7 +27,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 2,
-      recipeCategory: 'Breakfast',
+      recipeCategory: 'Bữa Sáng ',
       recipeName: 'Sinh tố',
       recipeImage:
           'https://images.pexels.com/photos/5366704/pexels-photo-5366704.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -47,8 +47,8 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 3,
-      recipeCategory: 'Breakfast',
-      recipeName: 'Burritos',
+      recipeCategory: 'Bữa Sáng',
+      recipeName: 'Bánh Burritos',
       recipeImage:
           'https://images.pexels.com/photos/5848051/pexels-photo-5848051.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       prepTime: 35.0,
@@ -66,7 +66,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 4,
-      recipeCategory: 'Breakfast',
+      recipeCategory: 'Bữa Sáng',
       recipeName: 'Trứng chiên ',
       recipeImage:
           'https://images.pexels.com/photos/6294248/pexels-photo-6294248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -81,7 +81,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 5,
-      recipeCategory: 'Breakfast',
+      recipeCategory: 'Bữa Sáng',
       recipeName: 'Sinh tố',
       recipeImage:
           'https://images.unsplash.com/photo-1534352436920-f658b50b73fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
@@ -101,7 +101,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 6,
-      recipeCategory: 'Lunch',
+      recipeCategory: 'Bữa Trưa',
       recipeName: 'Trứng ốp lết',
       recipeImage:
       'https://images.unsplash.com/photo-1588580261949-f17eacb905c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
@@ -124,7 +124,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 7,
-      recipeCategory: 'Lunch',
+      recipeCategory: 'Bữa Trưa',
       recipeName: 'Bánh Tostadas',
       recipeImage:
       'https://images.unsplash.com/photo-1619019187992-b2569e321752?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80',
@@ -153,7 +153,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 8,
-      recipeCategory: 'Lunch',
+      recipeCategory: 'Bữa Trưa',
       recipeName: 'Bánh Pizza',
       recipeImage:
       'https://images.pexels.com/photos/1260968/pexels-photo-1260968.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -179,7 +179,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 9,
-      recipeCategory: 'Lunch',
+      recipeCategory: 'Bữa Trưa',
       recipeName: 'Salad cá ngừ',
       recipeImage:
       'https://images.unsplash.com/photo-1604497181015-76590d828b75?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1742&q=80',
@@ -202,7 +202,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 10,
-      recipeCategory: 'Lunch',
+      recipeCategory: 'Bữa Trưa',
       recipeName: 'Salad gà',
       recipeImage:
       'https://images.pexels.com/photos/6107787/pexels-photo-6107787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -225,7 +225,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 11,
-      recipeCategory: 'Dinner',
+      recipeCategory: 'Bữa Tối',
       recipeName: 'Cá hồi tỏi',
       recipeImage:
       'https://images.unsplash.com/photo-1584913855963-e0b0229af61d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1335&q=80',
@@ -250,7 +250,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 12,
-      recipeCategory: 'Dinner',
+      recipeCategory: 'Bữa Tối',
       recipeName: 'Gà BBQ',
       recipeImage:
       'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
@@ -273,7 +273,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 13,
-      recipeCategory: 'Dinner',
+      recipeCategory: 'Bữa Tối',
       recipeName: 'Mì ống bông cải',
       recipeImage:
       'https://images.unsplash.com/photo-1607118750694-1469a22ef45d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
@@ -296,7 +296,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 14,
-      recipeCategory: 'Dinner',
+      recipeCategory: 'Bữa Tối',
       recipeName: 'Mì ',
       recipeImage:
       'https://images.unsplash.com/photo-1608756687911-aa1599ab3bd9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
@@ -321,7 +321,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 15,
-      recipeCategory: 'Dinner',
+      recipeCategory: 'Bữa Tối',
       recipeName: 'Tôm nướng ',
       recipeImage:
       'https://images.unsplash.com/photo-1605493624448-8efd97c98c91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80',
@@ -446,7 +446,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 21,
-      recipeCategory: 'Desert',
+      recipeCategory: 'Bánh ngọt',
       recipeName: 'Mousse Chocolate',
       recipeImage:
       'https://images.pexels.com/photos/1707920/pexels-photo-1707920.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -469,7 +469,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 22,
-      recipeCategory: 'Desert',
+      recipeCategory: 'Bánh ngọt',
       recipeName: 'Táo chiên bơ',
       recipeImage:
       'https://images.unsplash.com/photo-1635876021223-bc7717e2b11e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
@@ -490,7 +490,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 23,
-      recipeCategory: 'Desert',
+      recipeCategory: 'Bánh ngọt',
       recipeName: 'Kem trái cây',
       recipeImage:
       'https://images.pexels.com/photos/5060453/pexels-photo-5060453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -510,7 +510,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 24,
-      recipeCategory: 'Desert',
+      recipeCategory: 'Bánh ngọt',
       recipeName: 'Bánh kem',
       recipeImage:
       'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -531,7 +531,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 25,
-      recipeCategory: 'Desert',
+      recipeCategory: 'Bánh ngọt',
       recipeName: 'Bánh cam',
       recipeImage:
       'https://images.unsplash.com/photo-1609355109553-3bb67c76b1f7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
@@ -552,7 +552,7 @@ class ListOfRecipes with ChangeNotifier {
 
     Recipe(
       recipeId: 26,
-      recipeCategory: 'Beverage',
+      recipeCategory: 'Đồ uống',
       recipeName: 'Sinh tố',
       recipeImage:
       'https://images.pexels.com/photos/5946628/pexels-photo-5946628.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -567,7 +567,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 27,
-      recipeCategory: 'Beverage',
+      recipeCategory: 'Đồ uống',
       recipeName: 'Nước ép Zinger',
       recipeImage:
       'https://images.unsplash.com/photo-1506802913710-40e2e66339c9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
@@ -582,7 +582,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 28,
-      recipeCategory: 'Beverage',
+      recipeCategory: 'Đồ uống',
       recipeName: 'Nước chanh dâu',
       recipeImage:
       'https://images.unsplash.com/photo-1621263764928-df1444c5e859?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
@@ -604,7 +604,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 29,
-      recipeCategory: 'Beverage',
+      recipeCategory: 'Đồ uống',
       recipeName: 'Cà phê Dalgona',
       recipeImage:
       'https://images.unsplash.com/photo-1588857756087-281f8cceb865?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=984&q=80',
@@ -624,7 +624,7 @@ class ListOfRecipes with ChangeNotifier {
     ),
     Recipe(
       recipeId: 30,
-      recipeCategory: 'Beverage',
+      recipeCategory: 'Đồ uống',
       recipeName: 'Trà đá Thái',
       recipeImage:
       'https://images.pexels.com/photos/40594/lemon-tea-cold-beverages-summer-offerings-40594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',

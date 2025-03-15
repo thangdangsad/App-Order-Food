@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
                  height: 6.0.h,
               ),
               Text(
-                'Profile',
+                'Hồ Sơ',
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               SizedBox(
@@ -50,7 +50,7 @@ class ProfileListView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           children: [
             const ProfileListTile(
-              text: 'Account',
+              text: 'Tài Khoản',
               icon: UniconsLine.user_circle,
             ),
             Divider(
@@ -59,7 +59,7 @@ class ProfileListView extends StatelessWidget {
               endIndent: 10.0,
             ),
             const ProfileListTile(
-              text: 'Settings',
+              text: 'Cài đặt',
               icon: UniconsLine.setting,
             ),
             Divider(

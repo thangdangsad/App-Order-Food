@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
               height: 40.0,
             ),
             Text(
-              'Popular Recipes',
+              'Phổ Biến',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(
@@ -73,7 +73,7 @@ class HomeHeaderRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Good Morning, Devina',
+          'Xin Chào',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const Spacer(
@@ -206,7 +206,7 @@ class HomeStack extends StatelessWidget {
                           width: 5.0,
                         ),
                         Text(
-                          '${prepTime + cookTime} M Total',
+                          '${prepTime + cookTime} Phút ',
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!

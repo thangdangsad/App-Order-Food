@@ -47,7 +47,7 @@ class _SavedRecipesState extends State<SavedRecipes> {
           height: 6.0.h,
         ),
         Text(
-          'Saved',
+          'Lưu',
           style: Theme.of(context).textTheme.displayLarge,
         ),
         SizedBox(
@@ -94,7 +94,7 @@ class _SavedRecipesState extends State<SavedRecipes> {
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('${recipe.recipeName} deleted'),
+                        content: Text('Đã xóa ${recipe.recipeName}'),
                       ),
                     );
                   },
@@ -136,7 +136,7 @@ class _SavedRecipesState extends State<SavedRecipes> {
                                       width: 1.5.w,
                                     ),
                                     Text(
-                                      '${recipe.prepTime.toStringAsFixed(0)} M Prep',
+                                      '${recipe.prepTime.toStringAsFixed(0)} phút chuẩn bị',
                                       style:
                                           Theme.of(context).textTheme.bodyMedium,
                                     ),
@@ -156,7 +156,7 @@ class _SavedRecipesState extends State<SavedRecipes> {
                                       width: 1.5.w,
                                     ),
                                     Text(
-                                      '${recipe.cookTime.toStringAsFixed(0)} M Cook',
+                                      '${recipe.cookTime.toStringAsFixed(0)} phút  nấu',
                                       style:
                                           Theme.of(context).textTheme.bodyMedium,
                                     ),
@@ -193,7 +193,7 @@ class EmptyRecipe extends StatelessWidget {
             SizedBox(height: 10.h,),
             Image.asset('assets/recipebook.gif'),
             Text(
-              'You haven\'t saved any recipes yet',
+              'Chưa lưu bất kỳ công thức nào',
               style: Theme.of(context)
                   .textTheme
                   .headlineMedium!
@@ -203,7 +203,7 @@ class EmptyRecipe extends StatelessWidget {
               height: 5.0,
             ),
             Text(
-              'Want to take a look?',
+              'Muốn xem thêm?',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             SizedBox(height: 2.5.h),
@@ -225,7 +225,7 @@ class EmptyRecipe extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Explore',
+                    'Khám Phá',
                     style: Theme.of(context)
                         .textTheme
                         .headlineMedium!

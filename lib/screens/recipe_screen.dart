@@ -65,7 +65,7 @@ class RecipeMethod extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Method',
+              'Cách làm',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(
@@ -170,7 +170,7 @@ class RecipeAbout extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      '${popularRecipes.prepTime.toStringAsFixed(0)} M Prep Time',
+                      '${popularRecipes.prepTime.toStringAsFixed(0)} phút chuẩn bị',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
@@ -182,7 +182,7 @@ class RecipeAbout extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      '${popularRecipes.cookTime.toStringAsFixed(0)} M Cook Time',
+                      '${popularRecipes.cookTime.toStringAsFixed(0)} phút  nấu',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
@@ -199,7 +199,7 @@ class RecipeAbout extends StatelessWidget {
                   width: 5.0,
                 ),
                 Text(
-                  '${popularRecipes.recipeServing} People Serving',
+                  '${popularRecipes.recipeServing} người',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
@@ -234,7 +234,7 @@ class RecipeIngredient extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Ingredients',
+                'Thành phần',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(

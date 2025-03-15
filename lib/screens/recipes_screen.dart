@@ -109,7 +109,7 @@ class _RecipesListViewState extends State<RecipesListView> {
                                   width: 1.5.w,
                                 ),
                                 Text(
-                                  '${recipeList[index].prepTime.toStringAsFixed(0)}M Prep',
+                                  '${recipeList[index].prepTime.toStringAsFixed(0)}phút chuẩn bị',
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               ],
@@ -128,7 +128,7 @@ class _RecipesListViewState extends State<RecipesListView> {
                                   width: 1.5.w,
                                 ),
                                 Text(
-                                  '${recipeList[index].cookTime.toStringAsFixed(0)}M Cook',
+                                  '${recipeList[index].cookTime.toStringAsFixed(0)}phút  nấu',
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               ],
