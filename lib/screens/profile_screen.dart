@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:unicons/unicons.dart';
 
 
+import '../provider/auth_provider.dart';
 import '../widgets/profile_image.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -17,16 +19,12 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               SizedBox(
-                 height: 6.0.h,
-              ),
+              SizedBox(height: 6.0.h),
               Text(
                 'Hồ Sơ',
                 style: Theme.of(context).textTheme.displayLarge,
               ),
-              SizedBox(
-                height: 4.0.h,
-              ),
+              SizedBox(height: 4.0.h),
               const ProfileHeader(),
               const ProfileListView()
             ],
@@ -37,50 +35,61 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
+
 class ProfileListView extends StatelessWidget {
-  const ProfileListView({
-    Key? key,
-  }) : super(key: key);
+  const ProfileListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context); // Lấy AuthService
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.55,
       child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          children: [
-            const ProfileListTile(
-              text: 'Tài Khoản',
-              icon: UniconsLine.user_circle,
-            ),
-            Divider(
-              color: Colors.grey.shade400,
-              indent: 10.0,
-              endIndent: 10.0,
-            ),
-            const ProfileListTile(
-              text: 'Cài đặt',
-              icon: UniconsLine.setting,
-            ),
-            Divider(
-              color: Colors.grey.shade400,
-              indent: 10.0,
-              endIndent: 10.0,
-            ),
-            const ProfileListTile(
-              text: 'App Info',
-              icon: UniconsLine.info_circle,
-            ),
-            Divider(
-              color: Colors.grey.shade400,
-              indent: 10.0,
-              endIndent: 10.0,
-            ),
-            const ProfileListTile(
-              text: 'Logout',
-              icon: UniconsLine.sign_out_alt,
-            ),
-          ]),
+        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        children: [
+          const ProfileListTile(
+            text: 'Tài Khoản',
+            icon: UniconsLine.user_circle,
+          ),
+          Divider(
+            color: Colors.grey.shade400,
+            indent: 10.0,
+            endIndent: 10.0,
+          ),
+          const ProfileListTile(
+            text: 'Cài đặt',
+            icon: UniconsLine.setting,
+          ),
+          Divider(
+            color: Colors.grey.shade400,
+            indent: 10.0,
+            endIndent: 10.0,
+          ),
+          const ProfileListTile(
+            text: 'App Info',
+            icon: UniconsLine.info_circle,
+          ),
+          Divider(
+            color: Colors.grey.shade400,
+            indent: 10.0,
+            endIndent: 10.0,
+          ),
+          ProfileListTile(
+            text: 'Logout',
+            icon: UniconsLine.sign_out_alt,
+            onTap: () async {
+              // Xử lý đăng xuất
+              await authService.signOut();
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/sign-in',
+                    (route) => true,
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
@@ -88,13 +97,19 @@ class ProfileListView extends StatelessWidget {
 class ProfileListTile extends StatelessWidget {
   final String text;
   final IconData icon;
-  const ProfileListTile({Key? key, required this.text, required this.icon})
-      : super(key: key);
+  final VoidCallback? onTap;
+
+  const ProfileListTile({
+    Key? key,
+    required this.text,
+    required this.icon,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(text, style: Theme.of(context).textTheme.headlineSmall),
+      title: Text(text, style: Theme.of(context).textTheme.headlineMedium),
       horizontalTitleGap: 5.0,
       leading: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -105,7 +120,7 @@ class ProfileListTile extends StatelessWidget {
         size: 24.0.sp,
         color: Theme.of(context).iconTheme.color,
       ),
-      onTap: () {},
+      onTap: onTap, // Thêm onTap từ prop
     );
   }
 }
@@ -117,6 +132,9 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final user = Provider.of<AuthService>(context).currentUser;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -124,17 +142,14 @@ class ProfileHeader extends StatelessWidget {
         ProfileImage(
             height: 20.0.h,
             image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80'),
+
         const SizedBox(
           height: 10.0,
         ),
         Text(
-          'Devina Hermawan',
-          style: Theme.of(context).textTheme.headlineMedium,
+          user?.email ?? 'Email Address', // Email đăng nhập
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
-        const SizedBox(
-          height: 5.0,
-        ),
-        Text('Email Address', style: Theme.of(context).textTheme.headlineSmall),
       ],
     );
   }

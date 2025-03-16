@@ -8,40 +8,42 @@ class CustomTheme {
       primaryColor: const Color(0xff084f57),
       textTheme: TextTheme(
         displayLarge: GoogleFonts.openSans(
-          fontSize: 22.0.sp,
+          fontSize: 25.0.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.0,
           color: Colors.black87,
         ),
         headlineMedium: GoogleFonts.openSans(
-          fontSize: 12.0.sp,
+          fontSize: 20.0.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.0,
           color: Colors.black87,
         ),
         displaySmall: GoogleFonts.openSans(
-          fontSize: 10.0.sp,
+          fontSize: 18.0.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.0,
           color: Colors.black87,
         ),
         displayMedium: GoogleFonts.openSans(
-          fontSize: 12.0.sp,
+          fontSize: 17.0.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.0,
           color: Colors.black87,
         ),
         bodyLarge: GoogleFonts.openSans(
-          fontSize: 10.0.sp,
+          fontSize: 15.0.sp,
           letterSpacing: 1.0,
           fontWeight: FontWeight.w400,
         ),
-        bodyMedium: GoogleFonts.openSans(fontSize: 10.0.sp, letterSpacing: 1.0),
-        headlineSmall: GoogleFonts.openSans(fontSize: 12.0.sp, letterSpacing: 1.0),
+        bodyMedium: GoogleFonts.openSans(fontSize: 17.0.sp, letterSpacing: 1.0),
+        headlineSmall: GoogleFonts.openSans(fontSize: 18.0.sp, letterSpacing: 1.0),
       ),
       splashColor: const Color(0xff084f57),
       iconTheme: const IconThemeData(
         color: Color(0xff084f57),
       ),
   );
+
+
 }
