@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-
-
 import 'package:provider/provider.dart';
-
 import 'package:sizer/sizer.dart';
 import 'package:unicons/unicons.dart';
-
 import '../provider/recipe_provider.dart';
 import '../provider/saved_provider.dart';
 import '../widgets/network_image.dart';
@@ -26,18 +22,14 @@ class RecipesScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 6.0.h,
-              ),
+              SizedBox(height: 6.0.h),
               Text(
                 categoryName,
                 style: Theme.of(context).textTheme.displayLarge,
               ),
-              SizedBox(
-                height: 4.0.h,
-              ),
+              SizedBox(height: 4.0.h),
               const TabRow(),
-              const RecipesListView(),
+              const RecipesListView(), // Widget gây lỗi
             ],
           ),
         ),
@@ -47,9 +39,7 @@ class RecipesScreen extends StatelessWidget {
 }
 
 class RecipesListView extends StatefulWidget {
-  const RecipesListView({
-    Key? key,
-  }) : super(key: key);
+  const RecipesListView({Key? key}) : super(key: key);
 
   @override
   State<RecipesListView> createState() => _RecipesListViewState();
@@ -62,132 +52,111 @@ class _RecipesListViewState extends State<RecipesListView> {
     final categoryName = ModalRoute.of(context)!.settings.arguments as String;
     final recipeList = recipesProvider.findByCategory(categoryName);
     final savedProvider = Provider.of<SavedProvider>(context);
+
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 1.2,
+      // Bỏ height cố định để tránh overflow dọc
       child: ListView.builder(
-          itemCount: recipeList.length,
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return InkWell(
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: recipeList.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const RecipeScreen(),
+                settings: RouteSettings(arguments: recipeList[index]),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: Material(
+                color: Colors.white,
+                elevation: 2.0,
                 child: SizedBox(
                   height: 20.0.h,
-                  child: Material(
-                    color: Colors.white,
-                    elevation: 2.0,
-                    child: Row(
-                      children: [
-                        ReusableNetworkImage(
-                          height: 20.0.h,
-                          width: 18.0.h,
-                          imageUrl: recipeList[index].recipeImage,
-                        ),
-                        SizedBox(
-                          width: 2.0.h,
-                        ),
-                        Column(
+                  child: Row(
+                    children: [
+                      // Phần hình ảnh
+                      ReusableNetworkImage(
+                        height: 20.0.h,
+                        width: 30.w, // Giảm kích thước hình ảnh
+                        imageUrl: recipeList[index].recipeImage,
+                      ),
+                      SizedBox(width: 2.0.w),
+
+                      // Phần thông tin công thức
+                      Expanded( // Sử dụng Expanded để chiếm không gian còn lại
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               recipeList[index].recipeName,
                               style: Theme.of(context).textTheme.headlineMedium,
+                              maxLines: 2, // Giới hạn số dòng
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            SizedBox(
-                              height: 1.5.h,
+                            SizedBox(height: 1.5.h),
+                            _buildTimeRow(
+                              UniconsLine.clock,
+                              '${recipeList[index].prepTime.toStringAsFixed(0)} phút chuẩn bị',
                             ),
-                            Row(
-                              children: [
-                                Icon(
-                                  UniconsLine.clock,
-                                  size: 16.0,
-                                  color: Colors.grey.shade500,
-                                ),
-                                SizedBox(
-                                  width: 1.5.w,
-                                ),
-                                Text(
-                                  '${recipeList[index].prepTime.toStringAsFixed(0)}phút chuẩn bị',
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 1.0.h,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  UniconsLine.clock,
-                                  size: 16.0,
-                                  color: Colors.grey.shade500,
-                                ),
-                                SizedBox(
-                                  width: 1.5.w,
-                                ),
-                                Text(
-                                  '${recipeList[index].cookTime.toStringAsFixed(0)}phút  nấu',
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                              ],
+                            SizedBox(height: 1.0.h),
+                            _buildTimeRow(
+                              UniconsLine.clock,
+                              '${recipeList[index].cookTime.toStringAsFixed(0)} phút nấu',
                             ),
                           ],
                         ),
-                        const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      context
-                                          .read<SavedProvider>()
-                                          .addAndRemoveFromSaved(
-                                              recipeList[index]
-                                                  .recipeId
-                                                  .toString(),
-                                              recipeList[index].recipeCategory,
-                                              recipeList[index].cookTime,
-                                              recipeList[index].prepTime,
-                                              recipeList[index].recipeImage,
-                                              recipeList[index].recipeName);
-                                    },
-                                    icon: savedProvider.getSaved
-                                            .containsKey(recipeList[index]
-                                        .recipeId
-                                        .toString(),)
-                                        ? Icon(
-                                            Icons.bookmark,
-                                            size: 22.0.sp,
-                                          )
-                                        : Icon(
-                                            Icons.bookmark_border,
-                                            size: 22.0.sp,
-                                          ),
-                                ),
-                              ]),
+                      ),
+
+                      // Nút bookmark
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: IconButton(
+                          onPressed: () {
+                            context.read<SavedProvider>().addAndRemoveFromSaved(
+                              recipeList[index].recipeId.toString(),
+                              recipeList[index].recipeCategory,
+                              recipeList[index].cookTime,
+                              recipeList[index].prepTime,
+                              recipeList[index].recipeImage,
+                              recipeList[index].recipeName,
+                            );
+                          },
+                          icon: savedProvider.getSaved.containsKey(
+                            recipeList[index].recipeId.toString(),
+                          )
+                              ? Icon(Icons.bookmark, size: 22.0.sp)
+                              : Icon(Icons.bookmark_border, size: 22.0.sp),
                         ),
-                        const SizedBox(
-                          height: 40.0,
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RecipeScreen(),
-                  settings: RouteSettings(arguments: recipeList[index]),
-                ),
-              ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  // Widget phụ để xây dựng hàng thời gian
+  Widget _buildTimeRow(IconData icon, String text) {
+    return Row(
+      children: [
+        Icon(icon, size: 16.0, color: Colors.grey.shade500),
+        SizedBox(width: 1.5.w),
+        Flexible( // Sử dụng Flexible cho text
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.bodyMedium,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -16,7 +16,7 @@ class _AccountScreenState extends State<AccountScreen> {
   String? _selectedGender;
   DateTime? _selectedDate;
 
-  // Danh sách giới tính
+
   final List<String> _genders = ['Nam', 'Nữ', 'Khác'];
 
   @override
@@ -24,7 +24,7 @@ class _AccountScreenState extends State<AccountScreen> {
     super.initState();
     final userData = Provider.of<AuthService>(context, listen: false).userData;
 
-    // Khởi tạo giá trị từ dữ liệu người dùng
+
     _nameController = TextEditingController(text: userData?['name'] ?? '');
     _selectedGender = userData?['gender'] ?? 'Nam';
     _selectedDate = userData?['birthdate']?.toDate();
@@ -61,7 +61,7 @@ class _AccountScreenState extends State<AccountScreen> {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            // Trường nhập tên
+
             TextFormField(
               controller: _nameController,
               decoration: const InputDecoration(
@@ -71,7 +71,7 @@ class _AccountScreenState extends State<AccountScreen> {
             ),
             const SizedBox(height: 20),
 
-            // Dropdown chọn giới tính
+
             DropdownButtonFormField<String>(
               value: _selectedGender,
               items: _genders.map((gender) {
@@ -92,7 +92,6 @@ class _AccountScreenState extends State<AccountScreen> {
             ),
             const SizedBox(height: 20),
 
-            // Trường chọn ngày sinh
             TextFormField(
               controller: _birthdateController,
               decoration: InputDecoration(
@@ -106,7 +105,6 @@ class _AccountScreenState extends State<AccountScreen> {
             ),
             const SizedBox(height: 30),
 
-            // Nút lưu thay đổi
             if (user != null)
               ElevatedButton(
                 onPressed: () async {

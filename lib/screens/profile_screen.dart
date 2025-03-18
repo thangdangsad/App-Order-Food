@@ -112,18 +112,29 @@ class ProfileListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(text, style: Theme.of(context).textTheme.headlineMedium),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0), // Thêm padding ngang
+      title: Text(
+        text,
+        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+          fontSize: 14.0.sp, // Đảm bảo kích thước chữ
+          fontWeight: FontWeight.w600, // Thêm độ đậm
+        ),
+      ),
       horizontalTitleGap: 5.0,
       leading: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Icon(icon, color: Theme.of(context).iconTheme.color),
+        padding: const EdgeInsets.all(8.0),
+        child: Icon(
+          icon,
+          size: 24.0.sp, // Đồng bộ kích thước icon
+          color: Theme.of(context).iconTheme.color,
+        ),
       ),
       trailing: Icon(
         UniconsLine.angle_right,
-        size: 24.0.sp,
+        size: 24.0.sp, // Đồng bộ kích thước icon
         color: Theme.of(context).iconTheme.color,
       ),
-      onTap: onTap, // Thêm onTap từ prop
+      onTap: onTap,
     );
   }
 }
