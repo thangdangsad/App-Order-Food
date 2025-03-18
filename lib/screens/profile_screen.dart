@@ -26,7 +26,8 @@ class ProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: 4.0.h),
               const ProfileHeader(),
-              const ProfileListView()
+              const ProfileListView(),
+
             ],
           ),
         ),
@@ -48,9 +49,11 @@ class ProfileListView extends StatelessWidget {
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
         children: [
-          const ProfileListTile(
-            text: 'Tài Khoản',
-            icon: UniconsLine.user_circle,
+          ListTile(
+
+            title: const Text('Tài khoản'),
+            leading: const Icon(Icons.account_circle),
+            onTap: () => Navigator.pushNamed(context, '/account'),
           ),
           Divider(
             color: Colors.grey.shade400,

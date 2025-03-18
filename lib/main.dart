@@ -5,6 +5,7 @@ import 'package:myfood/custom_navbar.dart';
 import 'package:myfood/provider/auth_provider.dart';
 import 'package:myfood/provider/recipe_provider.dart';
 import 'package:myfood/provider/saved_provider.dart';
+import 'package:myfood/screens/account_screen.dart';
 import 'package:myfood/screens/home_screen.dart';
 import 'package:myfood/screens/login_screen.dart';
 import 'package:myfood/screens/signup_screen.dart';
@@ -78,6 +79,7 @@ class MyApp extends StatelessWidget {
             routes: {
               '/sign-in': (context) => const SignInScreen(),
               '/register': (context) => const RegisterScreen(),
+              '/account': (context) => const AccountScreen()
             },
           ),
         );

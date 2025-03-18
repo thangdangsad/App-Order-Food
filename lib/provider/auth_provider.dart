@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
@@ -13,6 +14,16 @@ class AuthService with ChangeNotifier {
       _currentUser = user;
       notifyListeners();
     });
+
+    AuthService() {
+      _firebaseAuth.authStateChanges().listen((user) {
+        _currentUser = user;
+        if (user != null) {
+          fetchUserData(); // Tải dữ liệu khi đăng nhập
+        }
+        notifyListeners();
+      });
+    }
   }
 
   Future<void> signInWithEmail(String email, String password) async {
@@ -65,6 +76,52 @@ class AuthService with ChangeNotifier {
       default:
         return 'Đã xảy ra lỗi. Vui lòng thử lại';
     }
+  }
+  Map<String, dynamic>? _userData;
+
+  Map<String, dynamic>? get userData => _userData;
+
+  Future<void> fetchUserData() async {
+    if (currentUser == null) return;
+    final doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(currentUser!.uid)
+        .get();
+    _userData = doc.data();
+    notifyListeners();
+  }
+
+  Future<void> updateBirthdate(DateTime newDate) async {
+    if (currentUser == null) return;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(currentUser!.uid) // Sử dụng UID làm document ID
+        .update({'birthdate': newDate});
+
+    await fetchUserData(); // Cập nhật lại dữ liệu cục bộ
+  }
+
+  // Thêm phương thức này vào constructor
+
+  Future<void> updateUserData({
+    required String name,
+    required String gender,
+    required DateTime birthdate,
+  }) async {
+    if (currentUser == null) return;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(currentUser!.uid) // Sử dụng UID làm document ID
+        .update({
+      'name': 'Tên mặc định',
+      'email': currentUser!.email,
+      'gender': 'Nam',
+      'birthdate': DateTime.now(),
+    });
+
+    await fetchUserData(); // Cập nhật lại dữ liệu
   }
 }
 
