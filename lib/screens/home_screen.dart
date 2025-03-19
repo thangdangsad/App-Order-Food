@@ -191,20 +191,19 @@ class HomeStack extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
                     Text(
                       text,
                       style: Theme.of(context).textTheme.headlineMedium,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
-                    const Spacer(),
+                    const SizedBox(height: 5.0),
+                    // Thời gian chuẩn bị
                     Row(
                       children: [
                         const Icon(UniconsLine.clock),
-                        const SizedBox(
-                          width: 5.0,
-                        ),
+                        const SizedBox(width: 5.0),
                         Text(
                           '${prepTime + cookTime} Phút ',
                           style: Theme.of(context)
@@ -214,13 +213,12 @@ class HomeStack extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Spacer(),
+                    const SizedBox(height: 8.0),
+                    // Đánh giá
                     Row(
                       children: [
                         const Icon(UniconsLine.star),
-                        const SizedBox(
-                          width: 5.0,
-                        ),
+                        const SizedBox(width: 5.0),
                         Text(
                           recipeReview.toStringAsFixed(0),
                           style: Theme.of(context)
@@ -249,7 +247,7 @@ class HomeGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120.0,
+      height: 120.0, // Total height of the horizontal list
       child: ListView.builder(
         itemCount: iconList.length,
         scrollDirection: Axis.horizontal,
@@ -257,6 +255,7 @@ class HomeGrid extends StatelessWidget {
           return InkWell(
             child: Container(
               width: 120.0,
+              height: 120.0, // Match parent list height
               padding: const EdgeInsets.all(5.0),
               child: Material(
                 color: Colors.white,
@@ -264,15 +263,19 @@ class HomeGrid extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                     iconList[index].icon,
+                    SizedBox(
+                      height: 60, // Constrain image height
+                      child: Image.asset(
+                        iconList[index].icon,
+                        fit: BoxFit.contain,
+                      ),
                     ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
+                    const SizedBox(height: 5.0),
                     Text(
                       iconList[index].text,
                       style: Theme.of(context).textTheme.bodyMedium,
+                      maxLines: 1, // Prevent text wrapping
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),

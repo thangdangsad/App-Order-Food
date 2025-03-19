@@ -6,24 +6,20 @@ class AuthService with ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   User? _currentUser;
   bool _isLoading = false;
+  Map<String, dynamic>? _userData;
 
   User? get currentUser => _firebaseAuth.currentUser;
   bool get isLoading => _isLoading;
+  Map<String, dynamic>? get userData => _userData;
+
   AuthService() {
     _firebaseAuth.authStateChanges().listen((user) {
       _currentUser = user;
+      if (user != null) {
+        fetchUserData();
+      }
       notifyListeners();
     });
-
-    AuthService() {
-      _firebaseAuth.authStateChanges().listen((user) {
-        _currentUser = user;
-        if (user != null) {
-          fetchUserData(); // Tải dữ liệu khi đăng nhập
-        }
-        notifyListeners();
-      });
-    }
   }
 
   Future<void> signInWithEmail(String email, String password) async {
@@ -43,10 +39,23 @@ class AuthService with ChangeNotifier {
   Future<void> registerWithEmail(String email, String password) async {
     try {
       _setLoading(true);
+      UserCredential userCredential =
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      // Tạo document mới trong Firestore
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+        'email': email,
+        'name': '',
+        'gender': '',
+        'birthdate': DateTime.now(),
+      });
+
     } on FirebaseAuthException catch (e) {
       throw AuthException(message: _getErrorMessage(e.code));
     } finally {
@@ -56,6 +65,47 @@ class AuthService with ChangeNotifier {
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
+  }
+
+  Future<void> fetchUserData() async {
+    if (currentUser == null) return;
+
+    DocumentReference docRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(currentUser!.uid);
+
+    DocumentSnapshot doc = await docRef.get();
+
+    if (!doc.exists) {
+      await docRef.set({
+        'email': currentUser!.email,
+        'name': '',
+        'gender': '',
+        'birthdate': DateTime.now(),
+      });
+    }
+
+    _userData = doc.data() as Map<String, dynamic>?;
+    notifyListeners();
+  }
+
+  Future<void> updateUserData({
+    required String name,
+    required String gender,
+    required DateTime birthdate,
+  }) async {
+    if (currentUser == null) return;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(currentUser!.uid)
+        .update({
+      'name': name,
+      'gender': gender,
+      'birthdate': birthdate,
+    });
+
+    await fetchUserData();
   }
 
   void _setLoading(bool loading) {
@@ -76,52 +126,6 @@ class AuthService with ChangeNotifier {
       default:
         return 'Đã xảy ra lỗi. Vui lòng thử lại';
     }
-  }
-  Map<String, dynamic>? _userData;
-
-  Map<String, dynamic>? get userData => _userData;
-
-  Future<void> fetchUserData() async {
-    if (currentUser == null) return;
-    final doc = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentUser!.uid)
-        .get();
-    _userData = doc.data();
-    notifyListeners();
-  }
-
-  Future<void> updateBirthdate(DateTime newDate) async {
-    if (currentUser == null) return;
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentUser!.uid) // Sử dụng UID làm document ID
-        .update({'birthdate': newDate});
-
-    await fetchUserData(); // Cập nhật lại dữ liệu cục bộ
-  }
-
-  // Thêm phương thức này vào constructor
-
-  Future<void> updateUserData({
-    required String name,
-    required String gender,
-    required DateTime birthdate,
-  }) async {
-    if (currentUser == null) return;
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentUser!.uid) // Sử dụng UID làm document ID
-        .update({
-      'name': 'Tên mặc định',
-      'email': currentUser!.email,
-      'gender': 'Nam',
-      'birthdate': DateTime.now(),
-    });
-
-    await fetchUserData(); // Cập nhật lại dữ liệu
   }
 }
 

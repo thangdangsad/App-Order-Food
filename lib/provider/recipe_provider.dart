@@ -274,7 +274,7 @@ class ListOfRecipes with ChangeNotifier {
     Recipe(
       recipeId: 13,
       recipeCategory: 'Bữa Tối',
-      recipeName: 'Mì ống bông cải',
+      recipeName: 'Mì ống bôngs',
       recipeImage:
       'https://images.unsplash.com/photo-1607118750694-1469a22ef45d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
       prepTime: 5.0,
@@ -447,7 +447,7 @@ class ListOfRecipes with ChangeNotifier {
     Recipe(
       recipeId: 21,
       recipeCategory: 'Bánh ngọt',
-      recipeName: 'Mousse Chocolate',
+      recipeName: 'Mousse',
       recipeImage:
       'https://images.pexels.com/photos/1707920/pexels-photo-1707920.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
       prepTime: 20.0,

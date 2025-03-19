@@ -50,15 +50,15 @@ class ProfileListView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 20.0),
         children: [
           ListTile(
-
             title: const Text('Tài khoản'),
             leading: const Icon(Icons.account_circle),
             onTap: () => Navigator.pushNamed(context, '/account'),
           ),
           Divider(
             color: Colors.grey.shade400,
-            indent: 10.0,
-            endIndent: 10.0,
+            thickness: 1.0,
+            indent: 20.0,
+            endIndent: 20.0,
           ),
           const ProfileListTile(
             text: 'Cài đặt',
@@ -109,15 +109,16 @@ class ProfileListTile extends StatelessWidget {
     this.onTap,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0), // Thêm padding ngang
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
       title: Text(
         text,
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-          fontSize: 14.0.sp, // Đảm bảo kích thước chữ
-          fontWeight: FontWeight.w600, // Thêm độ đậm
+        style: Theme.of(context).textTheme.displayLarge?.copyWith(
+          fontSize: 14.0.sp,
+          fontWeight: FontWeight.w600,
         ),
       ),
       horizontalTitleGap: 5.0,
@@ -125,13 +126,13 @@ class ProfileListTile extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Icon(
           icon,
-          size: 24.0.sp, // Đồng bộ kích thước icon
+          size: 24.0.sp,
           color: Theme.of(context).iconTheme.color,
         ),
       ),
       trailing: Icon(
         UniconsLine.angle_right,
-        size: 24.0.sp, // Đồng bộ kích thước icon
+        size: 24.0.sp,
         color: Theme.of(context).iconTheme.color,
       ),
       onTap: onTap,

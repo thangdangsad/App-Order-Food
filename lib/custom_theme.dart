@@ -14,13 +14,13 @@ class CustomTheme {
           color: Colors.black87,
         ),
         headlineMedium: GoogleFonts.openSans(
-          fontSize: 20.0.sp,
-          fontWeight: FontWeight.w600,
+          fontSize: 18.0.sp,
+          fontWeight: FontWeight.w500,
           letterSpacing: 1.0,
           color: Colors.black87,
         ),
         displaySmall: GoogleFonts.openSans(
-          fontSize: 18.0.sp,
+          fontSize: 15.0.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.0,
           color: Colors.black87,
@@ -37,7 +37,7 @@ class CustomTheme {
           fontWeight: FontWeight.w400,
         ),
         bodyMedium: GoogleFonts.openSans(fontSize: 17.0.sp, letterSpacing: 1.0),
-        headlineSmall: GoogleFonts.openSans(fontSize: 18.0.sp, letterSpacing: 1.0),
+        headlineSmall: GoogleFonts.openSans(fontSize: 15.0.sp, letterSpacing: 1.0),
       ),
       splashColor: const Color(0xff084f57),
       iconTheme: const IconThemeData(
